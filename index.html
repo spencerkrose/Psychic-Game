@@ -5,10 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Psychic Game</title>
 </head>
 
 <body>
+    <h1>Psychic Game</h1>
+    <p>Guess the letter I am thinking of! Click the button to play.</p>
+    <p style = color:red> Warning: This is very challenging, but possible!</p>
+    <p id="wins"></p>
+    <p id="losses"></p>
+    <p id="question"></p>
+
+    <button onclick="playGame()">Play Game</button>
+
+    <script>
+        function playGame() {
+            alert("Type any letter!");
+        }
+
+        function random_item(items) {
+
+            return alphabet[Math.floor(Math.random() * alphabet.length)];
+
+        }
+
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        var wins = 0;
+        var losses = 0;
+
+
+
+        document.onkeyup = function (event) {
+
+            if (event.key === random_item(alphabet)){
+
+                alert("You read my mind!");
+                wins++
+                document.getElementById("wins").textContent = "Wins: " + wins;
+            }
+
+            else {
+                alert("Wrong! Try again.")
+                losses++
+                document.getElementById("losses").textContent = "Losses: " + losses;
+            }
+        }
+
+    </script>
+
 </body>
 
 </html>
